@@ -17,7 +17,7 @@ function API() {
 export default API;
 
 function CreateAccessToken(){
-    fetch("https://f7j73hdw98.execute-api.us-east-1.amazonaws.com/default")
+    fetch("https://086kx4towj.execute-api.us-east-1.amazonaws.com/A")
     .then(response => response.json())
     .then((data) => {
         window.open(data.news[0].url);
