@@ -2,7 +2,7 @@ import Menu from '../Menu.js';
 import { Button } from 'antd';
 import styled from 'styled-components';
 
-const zube_api_key = CreateAccessToken;
+//const zube_api_key = CreateAccessToken;
 
 function API() {
     return (
@@ -43,7 +43,20 @@ var refresh_jwt = jsonwebtoken.sign({
 }, private_key, { algorithm: 'RS256' });
 
 console.log(refresh_jwt);
-return refresh_jwt;
+
+var APIAccessKey = APIAccess(refresh_jwt);
+console.log(APIAccessKey);
+}
+
+function APIAccess(refresh_jwt){
+    fetch('https://zube.io/api/users/tokens', {
+    method: 'POST',
+    headers: {
+        'Authorization': refresh_jwt,
+        'X-Client-ID': 'ed4cfc1a-48d1-11ed-9721-8fed3ea79b2a',
+        'Accept': 'application/json'
+    }
+});
 }
 
 const F1 = styled.div`
